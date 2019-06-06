@@ -5,6 +5,12 @@ Private Function CheckStringCHAR(InString) As String
 ' Function created 7/08/2003 by Stanley D. Grom, Jr.
 ' Modified by Ian Luria 6/3/19
 
+'Press and hold down the 'ALT' key, and press the 'F11' key.
+'Insert a Module in your VBAProject, Microsoft Excel Objects
+'To use the function in your workbook you will need to go to a cell in a black column and copy the next formula in a cell. The "InString" in the formula should be replaced with the (same row):
+'=CheckStringCHAR(InString)
+
+
 CheckStringCHAR = ""
 StringLength = Len(InString)
 
