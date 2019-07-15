@@ -1,0 +1,26 @@
+Private Function RemoveCompanyName(InString As String)
+
+Dim ArrayOfWords() As String 'varaint?
+Dim BadWords() As String
+Dim StringCompareReturn As Integer
+Dim CheckedWord As String
+
+BadWords = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a,inc,inc.", ",")
+
+ArrayOfWords = Split(InString)
+
+For Each Word As String In ArrayOfWords
+	
+	CheckedWord = Word
+	
+	For Each BadWord As String in BadWords
+		StringCompareReturn = StrComp(Word, BadWord)
+		
+		If StringCompareReturn = 0 Then
+			CheckedWord = ""
+			Exit For
+		
+	Next BadWord
+
+	RemoveCompanyName = RemoveCompanyName & CheckedWord
+Next Word
