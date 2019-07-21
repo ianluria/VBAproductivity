@@ -1,30 +1,36 @@
-Private Function RemoveCompanyName(InString As String)
+Private Function RemoveCompanyName(inString As String) As String
 
-	Dim ArrayOfWords() As String 'varaint?
-	Dim BadWords() As String
-	Dim StringCompareReturn As Integer
-	Dim CheckedWord As String
+	Dim stringCompareReturn As Byte
+	Dim checkedWord As String
+    Dim wordCounter As Integer
 
-	BadWords = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a,inc,inc.", ",")
+	Dim badWords As String() = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a,inc,inc.", ",")
 
-	ArrayOfWords = Split(InString)
+	Dim wordArrayOfInString As String() = Split(inString)
 
-	For Each Word In ArrayOfWords
+	wordCounter = 0
+
+	For Each word In wordArrayOfInString
 	
-		CheckedWord = Word
+		checkedWord = word
 	
-		For Each BadWord in BadWords
-			StringCompareReturn = StrComp(Word, BadWord)
+		For Each badWord in badWords
+			stringCompareReturn = StrComp(word, badWord)
 		
-			If StringCompareReturn = 0 Then
-				CheckedWord = ""
+			If stringCompareReturn = 0 Then
+				checkedWord = ""
 				Exit For
+			End If 
 		
-		Next BadWord
-		' May need to fix this
-		RemoveCompanyName = RemoveCompanyName & CheckedWord
-	Next Word
+		Next badWord
+		 
+		wordArrayOfInString(wordCounter) = checkedWord
 
+		wordCounter = wordCounter + 1
+
+	Next word
+
+	RemoveCompanyName = Join(wordArrayOfInString)
 End Function
 
 
