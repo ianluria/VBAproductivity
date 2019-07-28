@@ -5,16 +5,15 @@ Private Function RemoveSpecialCharacters(inString As String) As String
 ' To use the function in your workbook you will need to go to a cell in a black column and copy the next formula in a cell. The "inString" in the formula should be replaced with the (same row):
 ' =RemoveSpecialCharacters(inString)
 
-    Dim stringLength as Integer
     Dim searchChar as String * 1
     Dim foundChar as String * 1
 
-    stringLength = Len(inString)
+    ' Dim stringLength as Integer
+    ' stringLength = Len(inString)
 
-    ' Array of Strings used to store each character from inString
-    Dim cleanedCharArray(stringLength) As String
+    RemoveSpecialCharacters = ""
 
-    For i = 1 To stringLength
+    For i = 1 To Len(inString)
         
         searchChar = Mid(inString, i, 1)
         
@@ -37,10 +36,8 @@ Private Function RemoveSpecialCharacters(inString As String) As String
                 foundChar = searchChar
         End Select
         
-        cleanedCharArray(i-1) = foundChar
+        RemoveSpecialCharacters = RemoveSpecialCharacters + foundChar
         
     Next i
-
-    RemoveSpecialCharacters = Join(cleanedCharArray)
     
 End Function
