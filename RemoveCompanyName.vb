@@ -4,9 +4,11 @@ Private Function RemoveCompanyName(inString As String) As String
 	Dim checkedWord As String
     Dim wordCounter As Integer
 
-	Dim badWords As String() = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a,inc,inc.", ",")
+	Dim badWords()
+	badWords = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a,inc,inc.", ",")
 
-	Dim wordArrayOfInString As String() = Split(inString)
+	Dim wordArrayOfInString() 
+	wordArrayOfInString = Split(inString)
 
 	wordCounter = 0
 
