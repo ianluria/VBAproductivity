@@ -20,8 +20,6 @@ Private Function CleanUpManuBrand(inString As String) As String
             Case "#"
                 
             Case "%"
-               
-            Case "&"
                 
             Case "?"
                 
@@ -29,6 +27,12 @@ Private Function CleanUpManuBrand(inString As String) As String
                 
             Case "$"
 
+            Case "®"
+
+            Case "™"
+
+            Case "&"
+                cleanedStringOfIllegalChars = cleanedStringOfIllegalChars + " "
             Case Else
                 cleanedStringOfIllegalChars = cleanedStringOfIllegalChars + testChar
         End Select
@@ -172,7 +176,7 @@ Private Function CleanUpManuBrand(inString As String) As String
     ' Remove any company names
 
     Dim badWords as Variant
-	badWords = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a.,inc,inc.", ",")
+	badWords = Split("co,co.,ltd,ltd.,gmbh,spa,s.p.a.,inc,inc.,sa,s.a,s.a.,sl,s.l, s.l.,pvt", ",")
 
 	Dim wordArrayOfInString as Variant 
 	wordArrayOfInString = Split(CleanUpManuBrand)
